@@ -1,21 +1,24 @@
 import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
-import {Button,List,InputItem,WhiteSpace} from 'antd-mobile';
+import {Button,List,InputItem,WhiteSpace,NavBar,Icon} from 'antd-mobile';
 import { createForm } from "rc-form";
 
-class LoginUser extends Component{
+class Register extends Component{
     componentDidMount() {
         // this.autoFocusInst.focus();
     }
     handleClick = () => {
-
+        alert('12');
     };
     render () {
         const { getFieldProps } = this.props.form;
         return(
-            <div id="LoginUser">
+            <div id="Register">
+                <NavBar className={`ios-top`} icon={<Icon type="left" />} onLeftClick={() => this.props.history.goBack()}>
+                    注册
+                </NavBar>
                 <WhiteSpace />
-                    <List renderHeader={() => 'login'}>
+                    <List>
                         <InputItem
                             {...getFieldProps('phone')}
                             type="phone"
@@ -26,14 +29,18 @@ class LoginUser extends Component{
                             type="password"
                             placeholder="****"
                         >密码</InputItem>
+                        <InputItem
+                            {...getFieldProps('name')}
+                            type="text"
+                            placeholder="这是个不错的昵称"
+                        >昵称</InputItem>
                     </List>
                 <WhiteSpace />
                 <div className='App-h-50'>
                 </div>
-                <Button>login</Button>
+                <Button onClick={() => this.handleClick()}>立即注册</Button>
                 <div className="tcenter pt30">
-                    还没有账号？
-                    <Link to={`/register`}><span className="fc-blue">立即注册</span></Link>
+                    已有账号？ <Link to={`/`}><span className="fc-blue">立即登录</span></Link>
                 </div>
             </div>
         )
@@ -41,4 +48,4 @@ class LoginUser extends Component{
 
 }
 
-export default createForm()(LoginUser);
+export default createForm()(Register);

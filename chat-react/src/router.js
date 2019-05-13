@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import {HashRouter ,Route} from 'react-router-dom';
 import DefaultLayout from './layouts/DefaultLayout/DefaultLayout';
 import LoginUser from './layouts/LoginUser/LoginUser';
+import Register from './layouts/LoginUser/Register';
 
 export default class RouterWrap extends Component{
 
@@ -9,8 +10,9 @@ export default class RouterWrap extends Component{
         return(
             <div id="router">
                 <HashRouter>
-                    <Route path="/" Component={LoginUser} exact/>
-                    <Route path="/" Component={DefaultLayout} />
+                    <Route exact path="/" component={LoginUser}/>
+                    <Route path="/test" component={DefaultLayout} />
+                    <Route path="/register" component={Register} />
                 </HashRouter >
             </div>
         )
