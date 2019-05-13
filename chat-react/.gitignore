@@ -11,7 +11,19 @@
 # production
 /build
 
+# new add
+../../.svn/
+../../AuctionAutoBidForCG/
+../../LightGMU JS\345\274\200\346\224\276\346\216\245\345\217\243\350\256\276\350\256\241.xlsx
+../../sgadmin/
+../../sws/
+../../vue-app/
+../../zjsy/
+../../\347\253\236\346\213\215\351\241\271\347\233\256/
+
+
 # misc
+.svn
 .DS_Store
 .env.local
 .env.development.local
