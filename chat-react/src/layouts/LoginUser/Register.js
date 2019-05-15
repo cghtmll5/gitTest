@@ -4,12 +4,15 @@ import {Button,List,InputItem,WhiteSpace,NavBar,Icon} from 'antd-mobile';
 import { createForm } from "rc-form";
 
 class Register extends Component{
-    componentDidMount() {
-        // this.autoFocusInst.focus();
+    componentWillMount() {
+
     }
-    handleClick = () => {
-        alert('12');
+    submit = () => {
+        this.props.form.validateFields((error, value) => {
+            console.log(error, value.name);
+        });
     };
+
     render () {
         const { getFieldProps } = this.props.form;
         return(
@@ -38,7 +41,7 @@ class Register extends Component{
                 <WhiteSpace />
                 <div className='App-h-50'>
                 </div>
-                <Button onClick={() => this.handleClick()}>立即注册</Button>
+                <Button onClick={() => this.submit()}>立即注册</Button>
                 <div className="tcenter pt30">
                     已有账号？ <Link to={`/`}><span className="fc-blue">立即登录</span></Link>
                 </div>
