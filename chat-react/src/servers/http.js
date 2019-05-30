@@ -1,11 +1,12 @@
 import Axios from 'axios';
 import qs from 'qs';
+import {Toast} from 'antd-mobile';
 
 //create方法会创建一个新的axios实例，并继承axios几乎所有属性,配置和方法
 //建议使用 create 方法封装 http ，不对 axios 本身做特殊配置
 const http = Axios.create({
     //传参是一个对象，配置包含baseUrl，timeout等等，既可以在这里传进去，也可以在实例化后设置配置
-    baseURL: process.env.NODE_ENV==="development"?'http://127.0.0.1:6666':'https://www.baidu.com',
+    baseURL: 'http://127.0.0.1:6666',
     // 设置通用url，使用请求的方法时，就可以省略这个url
     // 可以通过process.env.NODE_ENV判断是否开发环境，来决定是否使用代理url
     // 代理是用来解决跨域的。。
@@ -54,7 +55,7 @@ http.interceptors.request.use(config => {
     //此处我是把全局loading动画的控制放在vuex的，所以引入了store
     return config
 }, error => {
-    //请求错误时做些事
+        //请求错误时做些事
     return Promise.reject(error)
 });
 //添加响应拦截器
@@ -64,22 +65,9 @@ http.interceptors.response.use(response => {
     return response.data
     //此处我直接返回res.data,方不方便你们应该有点b数的
 }, error => {
+    console.log(error);
     //请求错误时做些事
-    // error.response.status是后台响应请求的状态码
-    // 可以根据自己项目的需求  执行操作
-    if (error.response.status===401){
-        //这里引入vue是因为要使用挂载在vue原型上的element-ui的弹窗组件
-        // 因为这时挂载vue原型上的方法，这个import的vue并没有实例化，无法省略prototype
-        alert(error.response.data.msg);
-        // Vue.prototype.$alert(error.response.data.msg,{
-        //         //     type:error.response.data.type,
-        //         //     title:'Message',
-        //         // }).then(()=>{
-        //         //     myCookie.removeItem('user');
-        //         //     router.push({name:'SignIn'});//这里就是引入router的目的
-        //         //     console.clear();
-        //         // })
-    }
+    // return Toast.info(error);
     //store.commit('loadingOver');//关闭动画
     return Promise.reject(error)
 });

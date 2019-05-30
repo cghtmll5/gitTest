@@ -1,16 +1,47 @@
 import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
-import {Button,List,InputItem,WhiteSpace,NavBar,Icon} from 'antd-mobile';
+import {Button,List,InputItem,WhiteSpace,NavBar,Icon,Toast} from 'antd-mobile';
 import { createForm } from "rc-form";
+import { getRegister } from "../../servers/server";
+import {verifyMobileNumber} from "../../common/util"
 
 class Register extends Component{
     componentWillMount() {
-
+        console.log(getRegister);
+        console.log(verifyMobileNumber);
     }
     submit = () => {
-        this.props.form.validateFields((error, value) => {
-            console.log(error, value.name);
+        let params = {
+            userAccount:'',
+            userPassword:'',
+            nickName:'',
+        };
+        this.props.form.validateFields ((error, value) => {
+            if(error){
+                Toast.info(error);
+                return false;
+            }
+            params.userAccount = value.phone;
+            params.userPassword = value.password;
+            params.nickName = value.name;
         });
+        if(!params.userAccount || !verifyMobileNumber(params.userAccount)){
+            Toast.info('请输入正确手机账号！');
+            return;
+        }
+        if(!params.userPassword){
+            Toast.info('请输入密码！');
+            return;
+        }
+        if(!params.nickName){
+            Toast.info('请输入昵称！');
+            return;
+        }
+        getRegister(params).then(res=>{
+            console.log(res);
+        }).catch(err => {
+            Toast.info([err]);
+        })
     };
 
     render () {
