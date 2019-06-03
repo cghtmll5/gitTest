@@ -5,7 +5,7 @@
      * @returns {number}
      */
     
-    const verifyMobileNumber = (phoneNo, isStrict) => {
+    export const verifyMobileNumber = (phoneNo, isStrict) => {
       if ((typeof phoneNo === 'undefined') || (phoneNo = phoneNo + "").trim().length < 1) {
         return -1;
       }
@@ -33,12 +33,7 @@
      * @param content 地址字符串
      * @returns {boolean} 是否合法
      */
-    const verifyEmail = (content) => {
+    export const verifyEmail = (content) => {
       var reg = /^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+(([.-])[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
       return reg.test(content);
     }
-
-  export {
-    verifyMobileNumber,
-    verifyEmail
-  }

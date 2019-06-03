@@ -44,6 +44,7 @@
   "license": "ISC",
   "devDependencies": {
     "customize-cra": "^0.2.12",
+    "proxy": "^0.2.4",
     "react-app-rewired": "^2.1.3"
   }
 }

@@ -10,7 +10,7 @@ class Register extends Component{
         console.log(getRegister);
         console.log(verifyMobileNumber);
     }
-    submit = () => {
+    submit(){
         let params = {
             userAccount:'',
             userPassword:'',
@@ -40,7 +40,7 @@ class Register extends Component{
         getRegister(params).then(res=>{
             console.log(res);
         }).catch(err => {
-            Toast.info([err]);
+            Toast.info(err);
         })
     };
 
@@ -56,7 +56,7 @@ class Register extends Component{
                         <InputItem
                             {...getFieldProps('phone')}
                             type="phone"
-                            placeholder="186 1234 1234"
+                            placeholder="18612341234"
                         >账号</InputItem>
                         <InputItem
                             {...getFieldProps('password')}

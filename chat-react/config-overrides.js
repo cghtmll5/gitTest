@@ -6,5 +6,5 @@ module.exports = override(
         libraryName: 'antd-mobile',
         libraryDirectory: 'es',
         style: 'css',
-    })
+    }),
 );
