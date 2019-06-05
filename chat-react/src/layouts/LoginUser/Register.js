@@ -2,12 +2,11 @@ import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
 import {Button,List,InputItem,WhiteSpace,NavBar,Icon,Toast} from 'antd-mobile';
 import { createForm } from "rc-form";
-import { getRegister } from "../../servers/server";
+import API from "../../servers/server";
 import {verifyMobileNumber} from "../../common/util"
 
 class Register extends Component{
     componentWillMount() {
-        console.log(getRegister);
         console.log(verifyMobileNumber);
     }
     submit(){
@@ -37,7 +36,8 @@ class Register extends Component{
             Toast.info('请输入昵称！');
             return;
         }
-        getRegister(params).then(res=>{
+        debugger;
+        API.getRegister(params).then(res=>{
             console.log(res);
         }).catch(err => {
             Toast.info(err);

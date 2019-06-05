@@ -1,6 +1,6 @@
 
 import axios from 'axios'
-import { baseUrl} from '@/config/envconfig'
+import { baseUrl} from './config'
 
 /**
  * @params method {string} 方法名
@@ -21,8 +21,8 @@ export default class Http{
       let _option = {
         method,
         url,
-        baseUrl: baseUrl,
-        timeout: 30000,
+        baseURL: baseUrl,
+        timeout: 15000,
         params: null,
         data: data,
         headers: null,
