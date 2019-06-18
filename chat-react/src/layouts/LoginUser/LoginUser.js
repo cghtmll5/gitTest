@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 import {Button,List,InputItem,WhiteSpace} from 'antd-mobile';
 import { createForm } from "rc-form";
 
@@ -33,7 +33,7 @@ class LoginUser extends Component{
                 <Button>login</Button>
                 <div className="tcenter pt30">
                     还没有账号？
-                    <Link to={`/register`}><span className="fc-blue">立即注册</span></Link>
+                    <span className="fc-blue" onClick={() => this.props.history.push('register')}>立即注册</span>
                 </div>
             </div>
         )

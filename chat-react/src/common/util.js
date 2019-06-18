@@ -7,13 +7,13 @@
 
 export const verifyMobileNumber = (phoneNo, isStrict) => {
   if ((typeof phoneNo === 'undefined') || (phoneNo = phoneNo + "").trim().length < 1) {
-    return -1;
+    return false;
   }
   if (phoneNo.length !== 11) {
-    return -2;
+    return false;
   }
   if (!isStrict && phoneNo.indexOf('1') === 0) {
-    return 4;
+    return true;
   }
   let dx = [133, 153, 180, 181, 189, 173, 177]; //电信
   let lt = [130, 131, 132, 155, 156, 185, 186, 145, 176]; //联通
@@ -26,7 +26,8 @@ export const verifyMobileNumber = (phoneNo, isStrict) => {
   } else if (~yd.indexOf(needCheckPart)) {
     return 3;
   }
-  return 0;
+  console.log('come on ver')
+  return false;
 };
 /**
  * 验证邮箱地址是否合法

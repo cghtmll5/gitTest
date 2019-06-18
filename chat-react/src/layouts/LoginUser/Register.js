@@ -20,10 +20,11 @@ class Register extends Component{
                 Toast.info(error);
                 return false;
             }
-            params.userAccount = value.phone;
+            params.userAccount = value.phone.replace(/\s*/g,"");
             params.userPassword = value.password;
             params.nickName = value.name;
         });
+        console.log(params);
         if(!params.userAccount || !verifyMobileNumber(params.userAccount)){
             Toast.info('请输入正确手机账号！');
             return;
@@ -36,11 +37,12 @@ class Register extends Component{
             Toast.info('请输入昵称！');
             return;
         }
-        debugger;
         API.getRegister(params).then(res=>{
             console.log(res);
+            console.log('sucess');
         }).catch(err => {
-            Toast.info(err);
+            console.log(err);
+            console.log('faild');
         })
     };
 

@@ -21,11 +21,14 @@ export default class Http{
       let _option = {
         method,
         url,
-        baseURL: baseUrl,
+        baseURL:baseUrl,
+        // proxyTable:'http://119.3.73.42:6666',
         timeout: 15000,
         params: null,
         data: data,
-        headers: null,
+        headers:{
+          'Content-Type':'application/x-www-form-urlencoded'
+        },
         withCredentials: false,  //是否携带cookie发起请求
         validateStatus: (status)=> {
           return status >= 200 && status < 300
